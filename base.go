@@ -1,6 +1,8 @@
 package document
 
 import (
+	"fmt"
+	"strings"
 	"time"
 )
 
@@ -40,4 +42,12 @@ func (b *Base) GetRaw() []byte {
 
 func (b *Base) SetRaw(raw []byte) {
 	b.raw = raw
+}
+
+func (b *Base) SubType() string {
+	return strings.Split(b.Type, "#")[1]
+}
+
+func (b *Base) SetSubType(subType string) {
+	b.Type = fmt.Sprintf("%s#%s", b.Type, subType)
 }

@@ -7,7 +7,10 @@ import (
 )
 
 // SchemaLocation is where we host our document schema
-const SchemaLocation = "https://schema.brickchain.com/v2"
+const (
+	SchemaBase     = "https://IpsoVeritas.github.io/schemas"
+	SchemaLocation = SchemaBase + "/v0"
+)
 
 // Document describes the base types on a document
 type Document interface {

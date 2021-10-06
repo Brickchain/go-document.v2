@@ -2,7 +2,7 @@ package document
 
 import "time"
 
-const ActionDescriptorType = SchemaLocation + "/action-descriptor.json"
+const ActionDescriptorType = SchemaLocation + "/actiondescriptor.json"
 
 type ActionDescriptor struct {
 	Base

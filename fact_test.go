@@ -26,3 +26,7 @@ func TestFactHash(t *testing.T) {
 	}
 	fmt.Println(h)
 }
+
+func TestFact(t *testing.T) {
+	testSchema(t, FactType, NewFact("email"))
+}

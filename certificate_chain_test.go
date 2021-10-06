@@ -3,15 +3,13 @@ package document
 import (
 	"testing"
 	"time"
-
-	"gitlab.brickchain.com/brickchain/crypto"
 )
 
 func TestCertificate(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{"mandate"}
@@ -22,10 +20,10 @@ func TestCertificate(t *testing.T) {
 }
 
 func TestCertificateHasExpired(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 1)
 	b.DocumentTypes = []string{"mandate"}
@@ -37,10 +35,10 @@ func TestCertificateHasExpired(t *testing.T) {
 }
 
 func TestCertificateAllowedType(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{"*"}
@@ -51,10 +49,10 @@ func TestCertificateAllowedType(t *testing.T) {
 }
 
 func TestCertificateAllowedTypeFalse(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{"none"}
@@ -65,10 +63,10 @@ func TestCertificateAllowedTypeFalse(t *testing.T) {
 }
 
 func TestCertificateAllowedSubType(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{FactType + "#email"}
@@ -79,10 +77,10 @@ func TestCertificateAllowedSubType(t *testing.T) {
 }
 
 func TestCertificateAllowedSubTypeWildcard(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{FactType + "#*"}
@@ -93,10 +91,10 @@ func TestCertificateAllowedSubTypeWildcard(t *testing.T) {
 }
 
 func TestCertificateAllowedSubTypeFalse(t *testing.T) {
-	rootKey, _ := crypto.NewKey()
-	rootPK, _ := crypto.NewPublicKey(rootKey)
-	subKey, _ := crypto.NewKey()
-	subPK, _ := crypto.NewPublicKey(subKey)
+	rootKey := newKey(t)
+	rootPK := newPublicKey(t, rootKey)
+	subKey := newKey(t)
+	subPK := newPublicKey(t, subKey)
 
 	b := NewCertificate(rootPK, subPK, 100, 3600)
 	b.DocumentTypes = []string{FactType + "#email"}
